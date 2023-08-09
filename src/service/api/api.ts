@@ -1,0 +1,8 @@
+import axios from "axios";
+
+export const Api = axios.create({
+    baseURL: "https://localhost:8080/",
+    headers: {
+        "content-type": "application/json"
+    },
+})

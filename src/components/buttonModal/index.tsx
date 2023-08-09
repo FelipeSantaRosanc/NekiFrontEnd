@@ -1,0 +1,32 @@
+import { useState } from "react";
+import { ImageBackground, Modal, TouchableOpacity, View } from "react-native";
+
+import { ActionModal } from "../actionModal/ActionModal";
+import { styles } from "./styles";
+
+export function AddButton() {
+    const [visibalModal, setVisibalModal] = useState(false);
+
+    return (
+        <View style={styles.container}>
+            <TouchableOpacity
+                onPress={() => setVisibalModal(true)}
+                accessibilityLabel="Botão adicionar."
+                accessibilityHint="Quer adicionar uma skill? Clique aqui."
+            >
+                <ImageBackground
+                    source={require("../../assets/icons/mais.png")}
+                    style={styles.buttonImageIconStyle}
+                ></ImageBackground>
+                <Modal
+                    visible={visibalModal}
+                    transparent={true}
+                    onRequestClose={() => setVisibalModal(false)}
+                    animationType="fade"
+                >
+                    <ActionModal handleClose={() => setVisibalModal(false)} />
+                </Modal>
+            </TouchableOpacity>
+        </View>
+    );
+}
